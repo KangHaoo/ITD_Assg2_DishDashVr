@@ -9,7 +9,13 @@ public class ObjectInfoReader : MonoBehaviour
 
     [Header("Canvas Settings")]
     [Tooltip("Canvas that will be shown/hidden.")]
-    public GameObject canvas;  // Reference to the canvas
+    public GameObject canvas; // Reference to the canvas
+
+    [Header("Prefab Settings")]
+    [Tooltip("Prefab to spawn when conditions are met.")]
+    public GameObject meatPrefab; // Reference to the prefab
+    [Tooltip("Spawn location for the meat prefab.")]
+    public Transform spawnPoint; // Location to spawn the prefab
 
     private void Start()
     {
@@ -67,6 +73,29 @@ public class ObjectInfoReader : MonoBehaviour
             {
                 canvas.SetActive(false);
             }
+        }
+    }
+
+    // Call this function via a UI button
+    public void TrySpawnMeat()
+    {
+        // Check if both "meat" and "parsley" are in the trigger zone
+        if (tagsInTrigger.Contains("Beef") && tagsInTrigger.Contains("Parsley"))
+        {
+            // Check if the meat prefab and spawn point are assigned
+            if (meatPrefab != null && spawnPoint != null)
+            {
+                Instantiate(meatPrefab, spawnPoint.position, spawnPoint.rotation);
+                Debug.Log("Meat prefab spawned!");
+            }
+            else
+            {
+                Debug.LogWarning("Meat prefab or spawn point is not assigned!");
+            }
+        }
+        else
+        {
+            Debug.Log("Conditions not met: 'Beef' and 'Parsley' are not both in the trigger.");
         }
     }
 }

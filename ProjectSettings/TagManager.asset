@@ -9,6 +9,10 @@ TagManager:
   - Sausage
   - knife
   - Knife
+  - Parsley
+  - Vegatables
+  - Beef
+  - DirtyParsley
   layers:
   - Default
   - TransparentFX
