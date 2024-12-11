@@ -13,6 +13,16 @@ TagManager:
   - Vegatables
   - Beef
   - DirtyParsley
+  - DirtyPotato
+  - Potato
+  - DirtyRice
+  - Rice
+  - Cap
+  - UncookedRice
+  - Water
+  - CutSalmon
+  - CutRice
+  - UncookBeef
   layers:
   - Default
   - TransparentFX
