@@ -47,16 +47,12 @@ public class AuthManager : MonoBehaviour
         });
     }
 
-
-
     private void InitializeFirebase()
     {
         Debug.Log("Setting up Firebase Auth and Database");
         auth = FirebaseAuth.DefaultInstance;
         dbReference = FirebaseDatabase.DefaultInstance.RootReference;
     }
-
-
 
     public void LoginButton()
     {
@@ -157,109 +153,77 @@ public class AuthManager : MonoBehaviour
         }
     }
 
+    // Use userId (authManager.User.UserId) to store data
     private IEnumerator SaveUserData(string username, string uid, string password, UserStats userStats)
     {
-        var userInformation = new Dictionary<string, object>
-        {
-            { "username", username },
-            { "uid", uid },
-            { "password", password },
-            { "time_created", ServerValue.Timestamp }
-        };
+        // Convert UserStats object to a dictionary dynamically
+        var statsData = userStats.ToDictionary();
 
-        var infoTask = dbReference.Child("Players").Child(username).SetValueAsync(userInformation);
-        yield return new WaitUntil(() => infoTask.IsCompleted);
-
-        if (infoTask.Exception != null)
-        {
-            Debug.LogWarning($"Failed to save user information: {infoTask.Exception}");
-        }
-        else
-        {
-            Debug.Log("User information saved successfully.");
-        }
-
-        var statsTask = dbReference.Child("Stats").Child(username).SetValueAsync(userStats.ToDictionary());
-        yield return new WaitUntil(() => statsTask.IsCompleted);
-
-        if (statsTask.Exception != null)
-        {
-            Debug.LogWarning($"Failed to save user stats: {statsTask.Exception}");
-        }
-        else
-        {
-            Debug.Log("User stats saved successfully.");
-        }
-    }
-
-    public void UpdateTotalTimePlayed(int timePlayed)
+        var playerData = new Dictionary<string, object>
     {
-        if (User != null)
-        {
-            // Retrieve current user stats from the database
-            DatabaseReference userStatsRef = dbReference.Child("Stats").Child(User.DisplayName);
-
-            userStatsRef.GetValueAsync().ContinueWith(task =>
+        { "stat", statsData }, // Use the dynamic stats dictionary here
+        { "player_info", new Dictionary<string, object>
             {
-                if (task.IsCompleted)
-                {
-                    DataSnapshot snapshot = task.Result;
+                { "username", username },
+                { "uid", uid },
+                { "time_created", ServerValue.Timestamp }
+            }
+        }
+    };
 
-                    // Check if stats exist, if not create a new one
-                    if (snapshot.Exists)
-                    {
-                        var currentStats = snapshot.Value as Dictionary<string, object>;
-                        int currentTotalTime = (int)currentStats["total_time_played"];
+        // Save player data to Firebase using userId (uid) as the key
+        var saveTask = dbReference.Child("Players").Child(uid).SetValueAsync(playerData);
+        yield return new WaitUntil(() => saveTask.IsCompleted);
 
-                        // Update total time played
-                        currentTotalTime += timePlayed;
-
-                        // Save the updated stats back to Firebase
-                        userStatsRef.Child("total_time_played").SetValueAsync(currentTotalTime);
-                        Debug.Log("Updated total_time_played: " + currentTotalTime);
-                    }
-                    else
-                    {
-                        // If stats don't exist, create new stats object
-                        UserStats newStats = new UserStats(totalTimePlayed: timePlayed);
-                        userStatsRef.SetValueAsync(newStats.ToDictionary());
-                        Debug.Log("Created new stats with total_time_played: " + timePlayed);
-                    }
-                }
-                else
-                {
-                    Debug.LogWarning("Failed to fetch user stats: " + task.Exception);
-                }
-            });
+        if (saveTask.Exception != null)
+        {
+            Debug.LogWarning($"Failed to save player data: {saveTask.Exception}");
+        }
+        else
+        {
+            Debug.Log("Player data saved successfully.");
         }
     }
-}
 
 
-[System.Serializable]
-public class UserStats
-{
-    public int totalTimePlayed;
-    public int totalFoodMade;
-    public string favoriteFoodMade;
-    public int highestScore;
-
-    public UserStats(int totalTimePlayed = 0, int totalFoodMade = 0, string favoriteFoodMade = "None", int highestScore = 0)
+    [System.Serializable]
+    public class UserStats
     {
-        this.totalTimePlayed = totalTimePlayed;
-        this.totalFoodMade = totalFoodMade;
-        this.favoriteFoodMade = favoriteFoodMade;
-        this.highestScore = highestScore;
-    }
+        public int badDishesMade;
+        public double bestCompletionTime;
+        public int burntDishes;
+        public int goodDishesMade;
+        public int totalAttemptsMade;
+        public double totalPlayedTime;
 
-    public Dictionary<string, object> ToDictionary()
-    {
-        return new Dictionary<string, object>
+        public UserStats(
+            int badDishesMade = 0,
+            double bestCompletionTime = 0.0,
+            int burntDishes = 0,
+            int goodDishesMade = 0,
+            int totalAttemptsMade = 0,
+            double totalPlayedTime = 0.0
+        )
         {
-            { "total_time_played", totalTimePlayed },
-            { "total_food_made", totalFoodMade },
-            { "favorite_food_made", favoriteFoodMade },
-            { "highest_score", highestScore }
+            this.badDishesMade = badDishesMade;
+            this.bestCompletionTime = bestCompletionTime;
+            this.burntDishes = burntDishes;
+            this.goodDishesMade = goodDishesMade;
+            this.totalAttemptsMade = totalAttemptsMade;
+            this.totalPlayedTime = totalPlayedTime;
+        }
+
+        public Dictionary<string, object> ToDictionary()
+        {
+            return new Dictionary<string, object>
+        {
+            { "bad_dishes_made", badDishesMade },
+            { "best_completion_time", bestCompletionTime },
+            { "burnt_dishes", burntDishes },
+            { "good_dishes_made", goodDishesMade },
+            { "total_attempts_made", totalAttemptsMade },
+            { "total_played_time", totalPlayedTime }
         };
+        }
     }
 }

@@ -48,6 +48,7 @@ public class VegetableWasher : MonoBehaviour
         }
     }
 
+    // Method to clean the vegetable
     public void CleanVegetable()
     {
         if (currentDirtyVegetable == null) return;

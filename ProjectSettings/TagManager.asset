@@ -23,6 +23,9 @@ TagManager:
   - CutSalmon
   - CutRice
   - UncookBeef
+  - Fire
+  - Cookedbeef
+  - Burnfood
   layers:
   - Default
   - TransparentFX

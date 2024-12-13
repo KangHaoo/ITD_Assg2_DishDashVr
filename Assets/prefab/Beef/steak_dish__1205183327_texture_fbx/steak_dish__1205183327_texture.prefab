@@ -68,8 +68,41 @@ PrefabInstance:
       propertyPath: m_Name
       value: steak_dish__1205183327_texture
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f78976ebf38474699a4e3c30233de852, type: 3}
+      propertyPath: m_TagString
+      value: Cookedbeef
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: f78976ebf38474699a4e3c30233de852, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: -6186992890988451716}
   m_SourcePrefab: {fileID: 100100000, guid: f78976ebf38474699a4e3c30233de852, type: 3}
+--- !u!1 &960134676757122878 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: f78976ebf38474699a4e3c30233de852, type: 3}
+  m_PrefabInstance: {fileID: 113290066807861871}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &-6186992890988451716
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 960134676757122878}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.02000198, y: 0.00341172, z: 0.019990869}
+  m_Center: {x: 0.000002220273, y: -0.000044139975, z: -0.0000037346035}
