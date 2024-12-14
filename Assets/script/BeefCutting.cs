@@ -8,10 +8,22 @@ public class BeefCutting : MonoBehaviour
     public GameObject halfCutLayer;      // Reference to the half-cut beef layer
     public GameObject threeQuarterCutLayer; // Reference to the three-quarters cut beef layer
     public GameObject fullyCutLayer;    // Reference to the fully-cut beef layer
+    public AudioClip cuttingSound;      // Sound to play when cutting
 
+    private AudioSource audioSource;    // Reference to the AudioSource component
     private int cutState = 0; // 0 = uncut, 1 = half-cut, 2 = three-quarters cut, 3 = fully-cut
     private bool canCut = true; // Flag to check if the knife can cut again
     private float cooldownTime = 2f; // Cooldown time in seconds
+
+    private void Start()
+    {
+        // Get the AudioSource component
+        audioSource = GetComponent<AudioSource>();
+        if (audioSource == null)
+        {
+            Debug.LogError("AudioSource component is missing on this GameObject.");
+        }
+    }
 
     private void OnTriggerEnter(Collider other)
     {
@@ -20,6 +32,9 @@ public class BeefCutting : MonoBehaviour
         {
             // Start the cutting process based on the current cutState
             StartCutting();
+
+            // Play cutting sound
+            PlayCuttingSound();
 
             // Start the cooldown timer
             canCut = false;
@@ -48,6 +63,15 @@ public class BeefCutting : MonoBehaviour
                 cutState = 3;                          // Update state
                 break;
                 // No need for further cases, as fully-cut is the last state.
+        }
+    }
+
+    private void PlayCuttingSound()
+    {
+        // Play the cutting sound if an audio source and clip are available
+        if (audioSource != null && cuttingSound != null)
+        {
+            audioSource.PlayOneShot(cuttingSound);
         }
     }
 

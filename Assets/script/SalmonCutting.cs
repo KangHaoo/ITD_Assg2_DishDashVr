@@ -9,10 +9,22 @@ public class SalmonCutting : MonoBehaviour
     public GameObject secondCutLayer;         // Reference to the second cut salmon layer
     public GameObject thirdCutLayer;          // Reference to the third cut salmon layer
     public GameObject fullyCutLayer;          // Reference to the fully cut salmon layer
+    public AudioClip cuttingSound;            // Sound to play when cutting
 
+    private AudioSource audioSource;          // Reference to the AudioSource component
     private int cutState = 0; // 0 = uncut, 1 = first cut, 2 = second cut, 3 = third cut, 4 = fully cut
     private bool canCut = true; // Flag to check if the knife can cut again
     private float cooldownTime = 2f; // Cooldown time in seconds
+
+    private void Start()
+    {
+        // Get the AudioSource component
+        audioSource = GetComponent<AudioSource>();
+        if (audioSource == null)
+        {
+            Debug.LogError("AudioSource component is missing on this GameObject.");
+        }
+    }
 
     private void OnTriggerEnter(Collider other)
     {
@@ -21,6 +33,9 @@ public class SalmonCutting : MonoBehaviour
         {
             // Start the cutting process based on the current cutState
             StartCutting();
+
+            // Play cutting sound
+            PlayCuttingSound();
 
             // Start the cooldown timer
             canCut = false;
@@ -54,6 +69,15 @@ public class SalmonCutting : MonoBehaviour
                 cutState = 4;                        // Update state
                 break;
                 // Fully cut is the last state; no further action required.
+        }
+    }
+
+    private void PlayCuttingSound()
+    {
+        // Play the cutting sound if an audio source and clip are available
+        if (audioSource != null && cuttingSound != null)
+        {
+            audioSource.PlayOneShot(cuttingSound);
         }
     }
 

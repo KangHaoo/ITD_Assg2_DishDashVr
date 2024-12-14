@@ -26,6 +26,12 @@ TagManager:
   - Fire
   - Cookedbeef
   - Burnfood
+  - DirtyBroccoli
+  - CleanBroccoli
+  - CookedBroccoli
+  - BakePotato
+  - GoodDish
+  - BadDish
   layers:
   - Default
   - TransparentFX
