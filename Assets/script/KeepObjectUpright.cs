@@ -1,3 +1,9 @@
+/// <author>Daanish</author>
+/// <date>2024-06-27</date>
+/// <summary>
+/// This script help to manage the to stay upright
+/// </summary>
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;

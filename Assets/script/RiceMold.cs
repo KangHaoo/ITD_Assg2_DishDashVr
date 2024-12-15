@@ -1,3 +1,11 @@
+/// <author>karlyn</author>
+/// <date>2024-12-10</date>
+/// <summary>
+/// This script help to manage make ricemold for sushi
+/// </summary>
+
+
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;

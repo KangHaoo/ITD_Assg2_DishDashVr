@@ -1,3 +1,10 @@
+/// <author>Kang Hao</author>
+/// <date>2024-12-7</date>
+/// <summary>
+/// This script help to manage the cooking system.
+/// </summary>
+
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;

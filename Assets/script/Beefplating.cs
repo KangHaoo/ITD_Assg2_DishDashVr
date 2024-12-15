@@ -1,3 +1,10 @@
+/// <author>Karlyn</author>
+/// <date>2024-12-8</date>
+/// <summary>
+/// This script manage the plating system within.
+/// </summary>
+
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;

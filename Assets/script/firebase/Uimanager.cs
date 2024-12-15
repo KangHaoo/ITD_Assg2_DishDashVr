@@ -1,8 +1,8 @@
-/*
- * Author: Lee Kang Hao
- * Date: 5 nov 2024
- * Description: this script help to change screen after logining in
- */
+/// <author>KangHao</author>
+/// <date>2024-12-4</date>
+/// <summary>
+/// This script help to manage the ui within the game after login.
+/// </summary>
 
 
 

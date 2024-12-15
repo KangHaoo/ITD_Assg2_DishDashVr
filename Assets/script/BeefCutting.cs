@@ -1,3 +1,10 @@
+/// <author>Daanish</author>
+/// <date>2024-12-13</date>
+/// <summary>
+/// This script help to manage the cutting function
+/// </summary>
+
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;

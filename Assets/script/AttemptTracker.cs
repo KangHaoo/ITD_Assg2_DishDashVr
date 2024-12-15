@@ -1,3 +1,10 @@
+/// <author>Kang Hao</author>
+/// <date>2024-12-9</date>
+/// <summary>
+/// This script help to manager the total attemptTracked within the firebase
+/// </summary>
+
+
 using System.Collections;
 using UnityEngine;
 using Firebase.Database;

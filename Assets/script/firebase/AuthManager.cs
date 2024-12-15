@@ -1,3 +1,10 @@
+/// <author>KangHao</author>
+/// <date>2024-12-4</date>
+/// <summary>
+/// This script help to manage the function for firebase creation.
+/// </summary>
+
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;

@@ -1,3 +1,10 @@
+/// <author>Kang Hao</author>
+/// <date>2024-12-6</date>
+/// <summary>
+/// This script help to manage the time within unity an update to the firebase.
+/// </summary>
+
+
 using UnityEngine;
 using System;
 using TMPro;

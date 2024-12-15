@@ -4,7 +4,6 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Anchor
   - CookingObject
   - Sausage
   - knife
@@ -32,6 +31,14 @@ TagManager:
   - BakePotato
   - GoodDish
   - BadDish
+  - Pepper
+  - Salt
+  - Kettle
+  - Anchor
+  - Broccoli2
+  - Broccoli3
+  - Broccoli4
+  - Broccoli1
   layers:
   - Default
   - TransparentFX

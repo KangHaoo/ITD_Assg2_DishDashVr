@@ -1,3 +1,10 @@
+/// <author>karlyn</author>
+/// <date>2024-12-10</date>
+/// <summary>
+/// This script help to allow the user to pickup the rice/ collect the rice
+/// </summary>
+
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;

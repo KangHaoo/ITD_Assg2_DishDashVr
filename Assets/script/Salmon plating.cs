@@ -1,3 +1,9 @@
+/// <author>karlyn</author>
+/// <date>2024-12-12</date>
+/// <summary>
+/// This script help to manage the playing function for salmon
+/// </summary>
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;

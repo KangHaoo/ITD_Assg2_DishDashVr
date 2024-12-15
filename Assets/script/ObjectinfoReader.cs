@@ -1,3 +1,11 @@
+/// <author>karlyn</author>
+/// <date>2024-12-5</date>
+/// <summary>
+/// This script help to manage the helps to read the tag of the object in order to start the cooking process
+/// </summary>
+
+
+
 using System.Collections.Generic;
 using UnityEngine;
 

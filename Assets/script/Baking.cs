@@ -1,3 +1,10 @@
+/// <author>Kang Hao</author>
+/// <date>2024-12-11</date>
+/// <summary>
+/// this script manager the baking function for the cooking game
+/// </summary>
+
+
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
